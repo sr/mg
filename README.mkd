@@ -1,0 +1,51 @@
+mg
+==
+
+**mg** is a minimalist way to create [gems](http://rubygems.org) and publish
+them to [Rubyforge](http://rubyforge.org) using
+[Rake](http://rake.rubyforge.org).
+
+Usage
+-----
+
+In your Rakefile:
+
+    require "mg"
+
+    MG.new("foo.gemspec")
+
+The following tasks are now available:
+
+    rake install
+      Build and install as local gem
+
+    rake package
+      Build gem tarball into dist/
+
+    rake rubyforge
+      Publish the current release on Rubyforge
+
+    rake rubyforge:gem
+      Publish gem and tarball to rubyforge
+
+    rake rubyforge:git
+      Push to gitosis@rubyforge.org:mg.git
+
+Licence
+-------
+
+Written by [Ryan Tomayko](http://tomayko.com/about), extracted
+by [Simon Rozet](http://atonie.org).
+
+               DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                       Version 2, December 2004
+
+    Copyright (C) 2009 Ryan Tomayko and Simon Rozet
+    Everyone is permitted to copy and distribute verbatim or modified
+    copies of this license document, and changing it is allowed as long
+    as the name is changed.
+
+               DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+      TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+     0. You just DO WHAT THE FUCK YOU WANT TO.

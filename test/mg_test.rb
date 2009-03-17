@@ -2,10 +2,8 @@ require "test/unit"
 require File.dirname(__FILE__) + "/../lib/mg"
 
 class MGTest < Test::Unit::TestCase
-  include Rake
-
   def setup
-    @mg = MG.new(File.dirname(__FILE__) + "/../mg.gemspec")
+    MG.new(File.dirname(__FILE__) + "/../mg.gemspec")
   end
 
   def test_tasks
@@ -16,11 +14,11 @@ class MGTest < Test::Unit::TestCase
     assert_task_defined "dist/mg-0.0.1.tar.gz"
 
     assert_equal ["rubyforge:gem", "rubyforge:tarball", "rubyforge:git"],
-      Task["rubyforge"].prerequisites
+      Rake::Task["rubyforge"].prerequisites
   end
 
   private
     def assert_task_defined(task_name)
-      assert Task.task_defined?(task_name)
+      assert Rake::Task.task_defined?(task_name)
     end
 end

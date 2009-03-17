@@ -1,7 +1,7 @@
 mg
 ==
 
-**mg** is a minimalist way to create [gems](http://rubygems.org) and publish
+A a minimalist way to create [gems](http://rubygems.org) and publish
 them to [Rubyforge](http://rubyforge.org) using
 [Rake](http://rake.rubyforge.org).
 
@@ -29,7 +29,7 @@ The following tasks are now available:
       Publish gem and tarball to rubyforge
 
     rake rubyforge:git
-      Push to gitosis@rubyforge.org:mg.git
+      Push to gitosis@rubyforge.org:foo.git
 
 Licence
 -------

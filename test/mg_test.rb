@@ -7,18 +7,21 @@ class MGTest < Test::Unit::TestCase
   end
 
   def test_tasks
-    assert_task_defined :install
-    assert_task_defined :rubyforge
-    assert_task_defined :package
-    assert_task_defined "dist/mg-0.0.1.gem"
-    assert_task_defined "dist/mg-0.0.1.tar.gz"
+    assert task_defined?(:install)
+    assert task_defined?(:package)
+    assert task_defined?("dist/mg-0.0.1.gem")
+    assert task_defined?("dist/mg-0.0.1.tar.gz")
+    assert ! task_defined?(:rubyforge)
+  end
 
-    assert_equal ["rubyforge:gem", "rubyforge:tarball", "rubyforge:git"],
-      Rake::Task["rubyforge"].prerequisites
+  def test_with_rubyforge_project
+    # TODO assert_task_defined :rubyforge
+    # TODO assert_equal ["rubyforge:gem", "rubyforge:tarball", "rubyforge:git"],
+    # TODO  Rake::Task["rubyforge"].prerequisites
   end
 
   private
-    def assert_task_defined(task_name)
-      assert Rake::Task.task_defined?(task_name)
+    def task_defined?(task_name)
+      Rake::Task.task_defined?(task_name)
     end
 end

@@ -9,8 +9,8 @@ class MGTest < Test::Unit::TestCase
   def test_tasks
     assert task_defined?(:install)
     assert task_defined?(:package)
-    assert task_defined?("dist/mg-0.0.1.gem")
-    assert task_defined?("dist/mg-0.0.1.tar.gz")
+    assert task_defined?("dist/mg-0.0.2.gem")
+    assert task_defined?("dist/mg-0.0.2.tar.gz")
     assert ! task_defined?(:rubyforge)
   end
 

@@ -44,6 +44,11 @@ class MG < Rake::TaskLib
         sh "gem install #{package(".gem")}"
       end
 
+      desc "Build and install edge as a local gem"
+      task :"install:edge" => package(".999.gem") do
+        sh "gem install #{package(".999.gem")}"
+      end
+
       desc "Build gem and tarball into dist/"
       task :package => %w(.gem .tar.gz).map { |ext| package(ext) }
 
@@ -61,6 +66,22 @@ class MG < Rake::TaskLib
       file package(".gem") => "dist/" do |f|
         sh "gem build #{name}.gemspec"
         mv File.basename(f.name), f.name
+      end
+
+      desc "Build the edge gem in dist/"
+      file package(".999.gem") => ["dist/", "#{name}.999.gemspec"] do |f|
+        sh "gem build #{name}.999.gemspec"
+        mv File.basename(f.name), f.name
+      end
+
+      file "#{name}.999.gemspec" do |f|
+        File.open(f.name, "w") { |dest|
+          dest << File.read("#{name}.gemspec").
+                gsub(/version\s*=\s*['"](.*?)['"]/) { |m|
+                  "version = \"#{spec.version}.999\";"
+                }
+        }
+        rm_f f.name
       end
 
       if group

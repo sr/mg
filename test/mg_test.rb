@@ -11,6 +11,7 @@ class MGTest < Test::Unit::TestCase
     assert task_defined?(:package)
     assert task_defined?("dist/mg-0.0.2.gem")
     assert task_defined?("dist/mg-0.0.2.tar.gz")
+    assert task_defined?("install:edge")
     assert ! task_defined?(:rubyforge)
   end
 

@@ -44,9 +44,10 @@ class MG < Rake::TaskLib
         sh "gem install #{package(".gem")}"
       end
 
-      desc "Build gem tarball into dist/"
+      desc "Build gem and tarball into dist/"
       task :package => %w(.gem .tar.gz).map { |ext| package(ext) }
 
+      desc "Build the tarball in dist/"
       file package(".tar.gz") => "dist/" do |f|
         sh <<-SH
           git archive \
@@ -56,17 +57,18 @@ class MG < Rake::TaskLib
           SH
       end
 
+      desc "Build the gem in dist/"
       file package(".gem") => "dist/" do |f|
         sh "gem build #{name}.gemspec"
         mv File.basename(f.name), f.name
       end
 
       if group
-        desc "Publish the current release on Rubyforge"
+        desc "Publish the current version on Rubyforge"
         task :rubyforge => ["rubyforge:gem", "rubyforge:tarball", "rubyforge:git"]
 
         namespace :rubyforge do
-          desc "Publish gem and tarball to rubyforge"
+          desc "Publish gem and tarball on rubyforge"
           task :gem => package(".gem") do
             sh "rubyforge add_release #{group} #{name} #{spec.version} #{package('.gem')}"
           end

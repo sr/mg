@@ -1,7 +1,7 @@
 mg
 ==
 
-A a minimalist way to create [gems](http://rubygems.org) and publish
+Minimalist way to build [gems](http://rubygems.org) and publish
 them to [Rubyforge](http://rubyforge.org) using
 [Rake](http://rake.rubyforge.org).
 
@@ -19,17 +19,21 @@ The following tasks are now available:
     rake install
       Build and install as local gem
 
+    rake install:edge
+      Build and install edge as a local gem with
+      version suffixed by ".999"
+
     rake package
-      Build gem tarball into dist/
+      Build gem and tarball into dist/
 
     rake rubyforge
-      Publish the current release on Rubyforge
+      Publish the current version on Rubyforge
 
     rake rubyforge:gem
-      Publish gem and tarball to rubyforge
+      Publish gem and tarball on rubyforge
 
     rake rubyforge:git
-      Push to gitosis@rubyforge.org:foo.git
+      Push to gitosis@rubyforge.org:<project name>.git
 
 Licence
 -------

@@ -11,8 +11,4 @@ Gem::Specification.new do |s|
   s.files             = %w[README.mkd lib/mg.rb test/mg_test.rb]
   s.test_files        = %w[test/mg_test.rb]
   s.add_dependency "rake"
-
-  if s.respond_to?(:add_development_dependency)
-    s.add_development_dependency "mg"
-  end
 end

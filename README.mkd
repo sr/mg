@@ -11,7 +11,6 @@ Usage
 In your Rakefile:
 
     require "mg"
-
     MG.new("foo.gemspec")
 
 The following tasks are now available:
@@ -25,6 +24,8 @@ The following tasks are now available:
 
     rake package
       Build gem and tarball into dist/
+
+And if you've specified `rubyforge_project`:
 
     rake rubyforge
       Publish the current version on Rubyforge

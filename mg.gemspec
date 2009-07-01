@@ -11,4 +11,5 @@ Gem::Specification.new do |s|
   s.files             = %w[README.mkd lib/mg.rb test/mg_test.rb]
   s.test_files        = %w[test/mg_test.rb]
   s.add_dependency "rake"
+  s.add_dependency "rubyforge"
 end

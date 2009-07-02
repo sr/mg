@@ -69,19 +69,18 @@ class MG < Rake::TaskLib
       end
 
       desc "Build the edge gem in dist/"
-      file package(".999.gem") => ["dist/", "#{name}.999.gemspec"] do |f|
-        sh "gem build #{name}.999.gemspec"
+      file package(".999.gem") => package(".999.gemspec") do |f|
+        sh "gem build #{package(".999.gemspec")}"
         mv File.basename(f.name), f.name
       end
 
-      file "#{name}.999.gemspec" do |f|
+      file package(".999.gemspec") => "dist/" do |f|
         File.open(f.name, "w") { |dest|
           dest << File.read("#{name}.gemspec").
                 gsub(/version\s*=\s*['"](.*?)['"]/) { |m|
                   "version = \"#{spec.version}.999\";"
                 }
         }
-        rm_f f.name
       end
 
       if group

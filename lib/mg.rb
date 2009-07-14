@@ -46,7 +46,7 @@ class MG < Rake::TaskLib
 
       desc "Build and install edge as a local gem"
       task :"install:edge" => package(".999.gem") do
-        sh "gem install #{package(".999.gem")}"
+        sh "gem install #{package(".999.gem")}#{" --development" if ENV["HACK"]}"
       end
 
       desc "Build gem and tarball into dist/"

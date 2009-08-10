@@ -88,11 +88,12 @@ class MG < Rake::TaskLib
         task :rubyforge => ["rubyforge:gem", "rubyforge:tarball", "rubyforge:git"]
 
         namespace :rubyforge do
-          desc "Publish gem and tarball on rubyforge"
+          desc "Publish gem to rubyforge"
           task :gem => package(".gem") do
             sh "rubyforge add_release #{group} #{name} #{spec.version} #{package('.gem')}"
           end
 
+          desc "Publish tarball to rubyforge"
           task :tarball => package(".tar.gz") do
             sh "rubyforge add_file #{group} #{name} #{spec.version} #{package('.tar.gz')}"
           end

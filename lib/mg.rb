@@ -83,6 +83,11 @@ class MG < Rake::TaskLib
         }
       end
 
+      desc "Push the gem to gemcutter"
+      task :gemcutter => package(".gem") do
+        sh "gem push #{package(".gem")}"
+      end
+
       if group
         desc "Publish the current version on Rubyforge"
         task :rubyforge => ["rubyforge:gem", "rubyforge:tarball", "rubyforge:git"]

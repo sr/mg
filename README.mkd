@@ -1,9 +1,9 @@
 mg
 ==
 
-Minimalist way to build [gems](http://rubygems.org) and publish
-them to [Rubyforge](http://rubyforge.org) using
-[Rake](http://rake.rubyforge.org).
+Minimalist way to build [gems](http://rubygems.org) and publish them to
+[Rubyforge](http://rubyforge.org) or [Gemcutter](http://gemcutter.org)
+using [Rake](http://rake.rubyforge.org).
 
 Usage
 -----
@@ -14,6 +14,9 @@ In your Rakefile:
     MG.new("foo.gemspec")
 
 The following tasks are now available:
+
+    rake gemcutter
+      Push to the gem to gemcutter
 
     rake install
       Build and install as local gem

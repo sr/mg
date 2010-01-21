@@ -19,14 +19,10 @@ class MG < Rake::TaskLib
     spec.rubyforge_project
   end
 
-  # Load the gemspec using the same limitations as github
   def spec
     @spec ||= begin
       require "rubygems/specification"
-      data = File.read(gemspec)
-      spec = nil
-      Thread.new { spec = eval("$SAFE = 3\n#{data}") }.join
-      spec
+      eval File.read(gemspec)
     end
   end
 

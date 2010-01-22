@@ -15,10 +15,6 @@ class MG < Rake::TaskLib
     spec.name
   end
 
-  def group
-    spec.rubyforge_project
-  end
-
   def spec
     @spec ||= begin
       require "rubygems/specification"
@@ -82,28 +78,6 @@ class MG < Rake::TaskLib
       desc "Push the gem to gemcutter"
       task :gemcutter => package(".gem") do
         sh "gem push #{package(".gem")}"
-      end
-
-      if group
-        desc "Publish the current version on Rubyforge"
-        task :rubyforge => ["rubyforge:gem", "rubyforge:tarball", "rubyforge:git"]
-
-        namespace :rubyforge do
-          desc "Publish gem to rubyforge"
-          task :gem => package(".gem") do
-            sh "rubyforge add_release #{group} #{name} #{spec.version} #{package('.gem')}"
-          end
-
-          desc "Publish tarball to rubyforge"
-          task :tarball => package(".tar.gz") do
-            sh "rubyforge add_file #{group} #{name} #{spec.version} #{package('.tar.gz')}"
-          end
-
-          desc "Push to gitosis@rubyforge.org:#{name}.git"
-          task :git do
-            sh "git push gitosis@rubyforge.org:#{name}.git master"
-          end
-        end
       end
     end
 end

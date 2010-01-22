@@ -10,5 +10,4 @@ Gem::Specification.new do |s|
   s.has_rdoc          = false
   s.files             = %w[README.mkd lib/mg.rb]
   s.add_dependency "rake"
-  s.add_dependency "rubyforge"
 end

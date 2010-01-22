@@ -2,8 +2,7 @@ mg
 ==
 
 Minimalist way to build [gems](http://rubygems.org) and publish them to
-[Rubyforge](http://rubyforge.org) or [Gemcutter](http://gemcutter.org)
-using [Rake](http://rake.rubyforge.org).
+[Gemcutter](http://gemcutter.org) using [Rake](http://rake.rubyforge.org).
 
 Usage
 -----
@@ -27,17 +26,6 @@ The following tasks are now available:
 
     rake package
       Build gem and tarball into dist/
-
-And if you've specified `rubyforge_project`:
-
-    rake rubyforge
-      Publish the current version on Rubyforge
-
-    rake rubyforge:gem
-      Publish gem and tarball on rubyforge
-
-    rake rubyforge:git
-      Push to gitosis@rubyforge.org:<project name>.git
 
 Licence
 -------

@@ -20,10 +20,6 @@ The following tasks are now available:
     rake install
       Build and install as local gem
 
-    rake install:edge
-      Build and install edge as a local gem with
-      version suffixed by ".999"
-
     rake package
       Build gem and tarball into dist/
 

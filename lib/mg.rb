@@ -32,9 +32,12 @@ class MG < Rake::TaskLib
       CLOBBER.include("dist")
 
       desc "Build and install as local gem"
-      task :install => package(".gem") do
+      task "gem:install" => package(".gem") do
         sh "gem install #{package(".gem")}"
       end
+
+      desc "Build gem into dist/"
+      task :gem => package('.gem')
 
       desc "Build gem and tarball into dist/"
       task :package => %w(.gem .tar.gz).map { |ext| package(ext) }
@@ -55,9 +58,15 @@ class MG < Rake::TaskLib
         mv File.basename(f.name), f.name
       end
 
-      desc "Push the gem to gemcutter"
-      task :gemcutter => package(".gem") do
+      desc "Push the gem to RubyGems.org"
+      task :publish => package(".gem") do
+        Rake::Task[:test].invoke if Rake::Task.task_defined?(:test)
+        Rake::Task[:spec].invoke if Rake::Task.task_defined?(:spec)
+
         sh "gem push #{package(".gem")}"
       end
+
+      # Legacy
+      task :gemcutter => :publish
     end
 end

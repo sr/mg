@@ -59,7 +59,7 @@ class MG < Rake::TaskLib
       end
 
       desc "Push the gem to RubyGems.org"
-      task :publish => package(".gem") do
+      task "gem:publish" => package(".gem") do
         Rake::Task[:test].invoke if Rake::Task.task_defined?(:test)
         Rake::Task[:spec].invoke if Rake::Task.task_defined?(:spec)
 

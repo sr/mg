@@ -14,10 +14,13 @@ In your Rakefile:
 
 The following tasks are now available:
 
-    rake gemcutter
-      Push to the gem to gemcutter
+    rake gem
+      Build gem into dist/
 
-    rake install
+    rake gem:publish
+      Push the gem to RubyGems.org
+
+    rake gem:install
       Build and install as local gem
 
     rake package

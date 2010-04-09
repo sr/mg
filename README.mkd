@@ -1,9 +1,8 @@
 mg
 ==
 
-Minimalist way to build [gems](http://rubygems.org) and publish them to
-[Gemcutter](http://gemcutter.org) using [Rake](http://rake.rubyforge.org).
-Also build tarballs.
+Minimalist way to build and publish [gems](http://rubygems.org) using
+[Rake](http://rake.rubyforge.org). Also build tarballs.
 
 Usage
 -----

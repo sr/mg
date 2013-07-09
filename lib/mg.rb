@@ -18,7 +18,7 @@ class MG < Rake::TaskLib
   def spec
     @spec ||= begin
       require "rubygems/specification"
-      eval File.read(gemspec)
+      Gem::Specification.load(gemspec)
     end
   end
 

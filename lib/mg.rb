@@ -33,7 +33,11 @@ class MG < Rake::TaskLib
 
       desc "Build and install as local gem"
       task "gem:install" => package(".gem") do
-        sh "gem install #{package(".gem")}"
+        Bundler.with_clean_env do
+          sh "gem install #{package(".gem")}" do |_,result|
+            raise unless result.to_i.zero?
+          end
+        end
       end
 
       desc "Build gem into dist/"
